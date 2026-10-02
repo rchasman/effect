@@ -1,5 +1,37 @@
 # effect
 
+## 4.0.1
+
+### Patch Changes
+
+- [#8659](https://github.com/Effect-TS/effect/pull/8659) [`2ec021e`](https://github.com/Effect-TS/effect/commit/2ec021eff7fbd2206adc3e8bf4e803ed4bf07d6a) Thanks @samueleguino97! - Prevent entity registration when shard ownership is lost during construction. Pending requests retry on the new owner.
+
+- [#8662](https://github.com/Effect-TS/effect/pull/8662) [`cad1118`](https://github.com/Effect-TS/effect/commit/cad111867a666cebe8ff9bf2237a997fa6e4cb14) Thanks @tim-smart! - Avoid replaying suspended cluster workflows for unawaited deferred checkpoints while preserving interrupt wakes.
+
+- [#8637](https://github.com/Effect-TS/effect/pull/8637) [`1672d9c`](https://github.com/Effect-TS/effect/commit/1672d9ca8da3e5b536bf7afb73365cccc6c01f53) Thanks @tim-smart! - Fix cluster defect recovery to replay unfinished requests without duplicating requests awaiting their first dispatch. Stop replay and interrupt waiting requests on shutdown, and prevent superseded rebuilds from publishing stale handlers or SQL lock connections.
+
+- [#8629](https://github.com/Effect-TS/effect/pull/8629) [`498e72b`](https://github.com/Effect-TS/effect/commit/498e72ba14d0191d6bf66cc0e931c229a1ff442f) Thanks @tim-smart! - Preserve a fiber's `AsyncLocalStorage` context when another fiber wakes or interrupts it. Run `Effect.tryPromise` error handlers in the resumed fiber's context.
+
+- [#8652](https://github.com/Effect-TS/effect/pull/8652) [`18dfb98`](https://github.com/Effect-TS/effect/commit/18dfb98cf6d2aeedbab8ef5734f9bc273a82d56e) Thanks @mikearnaldi! - Preserve pending interruptions when an uninterruptible effect fails. Drop typed failures when interruption skips recovery handlers, but keep defects.
+
+- [#8657](https://github.com/Effect-TS/effect/pull/8657) [`04706ef`](https://github.com/Effect-TS/effect/commit/04706eff5da94b4d475b99eab8b0256bed97b080) Thanks @schickling-assistant! - Fix JSON Schema pattern importing for valid expressions whose RegExp source is canonicalized, including slashes, empty patterns, and literal line terminators.
+
+- [#8644](https://github.com/Effect-TS/effect/pull/8644) [`b5a2d4c`](https://github.com/Effect-TS/effect/commit/b5a2d4c1d62c9620a68d72b7f20248c69ef7663b) Thanks @sbking! - Prevent shard lock refreshes from releasing shards acquired while the refresh is in flight.
+
+- [#8660](https://github.com/Effect-TS/effect/pull/8660) [`1c18c68`](https://github.com/Effect-TS/effect/commit/1c18c688df10b697c10283160dba143e049f3d50) Thanks @tim-smart! - Prevent singleton shard reassignment from durably cancelling outstanding RPC requests.
+
+- [#8664](https://github.com/Effect-TS/effect/pull/8664) [`20dcd50`](https://github.com/Effect-TS/effect/commit/20dcd5060581077b46325a433f787ba10a56963d) Thanks @lloydrichards! - Preserve server and client extension capabilities in stateful MCP protocols.
+
+- [#8653](https://github.com/Effect-TS/effect/pull/8653) [`42e5750`](https://github.com/Effect-TS/effect/commit/42e5750f7e2fbf349cfe45452d7cc9dce98d6fe9) Thanks @lloydrichards! - Keep idle MCP HTTP subscriptions open on Cloudflare Workers with SSE keepalives.
+
+- [#8648](https://github.com/Effect-TS/effect/pull/8648) [`0b52bb4`](https://github.com/Effect-TS/effect/commit/0b52bb42fac5aecb8bcb8d899293c641b62c3f66) Thanks @dv-waynehaffenden! - Fix `RpcClient` stream interruption leaving chunk delivery blocked on a full buffer and stalling the shared protocol receive loop.
+
+- [#8627](https://github.com/Effect-TS/effect/pull/8627) [`e823e69`](https://github.com/Effect-TS/effect/commit/e823e693773aa163c0081af00a5236118446c6ae) Thanks @tim-smart! - Keep streaming RPC chunk decode failures local to the affected request and interrupt it on the server, without disconnecting unrelated requests.
+
+- [#8658](https://github.com/Effect-TS/effect/pull/8658) [`962647b`](https://github.com/Effect-TS/effect/commit/962647b6a16000f882e6999f001c513a8cccc711) Thanks @tim-smart! - Fix `RpcClient` protocol errors incorrectly failing requests started synchronously by error handlers. Only requests pending when the error broadcast begins now receive that error; new requests remain pending for their own responses.
+
+- [#8618](https://github.com/Effect-TS/effect/pull/8618) [`1f89b8e`](https://github.com/Effect-TS/effect/commit/1f89b8ec64e6362da3eaaff8cbb235df88d3441c) Thanks @serhii-indyrct! - Set `ScopedCache` entry expiry before waking lookup waiters, so a zero-TTL result cannot be reused.
+
 ## 4.0.0
 
 ### Patch Changes
